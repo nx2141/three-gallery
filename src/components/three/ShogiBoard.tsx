@@ -50,12 +50,11 @@ const Model: React.FC<ModelProps> = ({ onLoaded }) => {
 const CameraSetup = () => {
   const { camera, gl } = useThree()
   useEffect(() => {
-    camera.position.set(23, 10, 100) // カメラの位置を設定
+    camera.position.set(23, 15, 80) // カメラの位置を設定
     ;(camera as THREE.PerspectiveCamera).fov = 18 // 焦点距離を100mm相当に調整
     camera.updateProjectionMatrix() // カメラの投影行列を更新
 
     const controls = new OrbitControls(camera, gl.domElement)
-    controls.target.set(0, 0, 0) // オブジェクトを中心に設定
     controls.update()
 
     return () => {
@@ -92,13 +91,6 @@ const ShogiBoard = () => {
         <CameraSetup />
         <ambientLight intensity={0.9} />
         <spotLight
-          // Left Light
-          position={[15, 22, 0]} // スポットライトの位置を設定
-          angle={-15} // スポットライトの角度を設定
-          intensity={900} // スポットライトの強度を設定
-          castShadow // スポットライトに影を有効にする
-        />
-        <spotLight
           // Right Light
           position={[-24, 5, 1]} // スポットライトの位置を設定
           angle={15} // スポットライトの角度を設定
@@ -109,7 +101,7 @@ const ShogiBoard = () => {
           // Face Light
           position={[-4, 18, 8]} // スポットライトの位置を設定
           angle={23} // スポットライトの角度を設定
-          intensity={200} // スポットライトの強度を設定
+          intensity={500} // スポットライトの強度を設定
           castShadow // スポットライトに影を有効にする
         />
         <Model onLoaded={handleLoaded} />
