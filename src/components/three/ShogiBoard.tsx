@@ -41,6 +41,7 @@ const Model: React.FC<ModelProps> = ({ onLoaded }) => {
   }, [fbx, onLoaded])
 
   useFrame((state, delta) => {
+    console.log(state)
     mixer.current?.update(delta)
   })
 
