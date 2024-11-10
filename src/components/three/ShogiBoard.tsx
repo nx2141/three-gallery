@@ -1,4 +1,3 @@
-
 import { useFBX } from '@react-three/drei'
 import { Canvas, useFrame, useThree } from '@react-three/fiber'
 import ReactLoading from 'react-loading'
@@ -40,8 +39,7 @@ const Model: React.FC<ModelProps> = ({ onLoaded }) => {
     }
   }, [fbx, onLoaded])
 
-  useFrame((state, delta) => {
-    console.log(state)
+  useFrame((_, delta) => {
     mixer.current?.update(delta)
   })
 
@@ -51,7 +49,7 @@ const Model: React.FC<ModelProps> = ({ onLoaded }) => {
 const CameraSetup = () => {
   const { camera, gl } = useThree()
   useEffect(() => {
-    camera.position.set(23, 15, 80) // カメラの位置を設定
+    camera.position.set(23, 15, 120) // カメラの位置を設定
     ;(camera as THREE.PerspectiveCamera).fov = 18 // 焦点距離を100mm相当に調整
     camera.updateProjectionMatrix() // カメラの投影行列を更新
 
@@ -82,13 +80,13 @@ const ShogiBoard = () => {
   }, [])
 
   return (
-    <div className="hover:cursor-move">
+    <div className="relative aspect-square w-full hover:cursor-move">
       {loading && (
-        <div className="flex h-full items-center justify-center text-black">
+        <div className="absolute inset-0 flex items-center justify-center bg-white bg-opacity-50">
           <ReactLoading type="cylon" height={70} width={70} color="gray" />
         </div>
       )}
-      <Canvas shadows style={{ background: 'transparent' }}>
+      <Canvas shadows className="h-full w-full">
         <CameraSetup />
         <ambientLight intensity={0.9} />
         <spotLight
