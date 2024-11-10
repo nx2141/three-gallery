@@ -10,7 +10,7 @@ import {
 
 function App() {
   return (
-    <div className="mx-auto my-5 flex h-[600px] max-w-[850px] justify-center overflow-hidden">
+    <div className="mx-auto my-5 flex h-96 max-w-[850px] justify-center overflow-hidden sm:h-[600px]">
       <Tabs defaultValue="account" className="w-full">
         <TabsList className="relative z-20 flex w-full justify-center">
           <TabsTrigger value="将棋盤">将棋盤</TabsTrigger>
