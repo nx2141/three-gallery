@@ -1,5 +1,6 @@
 // src/App.tsx
 import './App.css'
+import GowebCat from './components/three/GowebCat'
 import ShogiBoard from '@/components/three/ShogiBoard'
 import {
   Tabs,
@@ -22,8 +23,8 @@ function App() {
           </div>
         </TabsContent>
         <TabsContent value="GOWEB猫" className="h-full w-full">
-          <div className="flex h-full w-full items-center justify-center">
-            準備中...
+          <div className="flex h-full w-full items-center justify-center bg-slate-200">
+            <GowebCat />
           </div>
         </TabsContent>
       </Tabs>
